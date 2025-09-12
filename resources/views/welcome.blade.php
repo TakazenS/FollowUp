@@ -7,7 +7,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
+    @include('components/header')
     <h1>Bienvenue !</h1>
-    <a href="{{ url('/patients') }}">Voir tout les patients</a>
 </body>
 </html>
