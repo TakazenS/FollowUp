@@ -4,5 +4,42 @@
     font-family: "Arial", sans-serif;
 }
 
+.sectionTitlePatient {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+}
+
+.containerGridPatient {
+    display: flex;
+    justify-content: center;
+}
+
+.sectionGridPatient {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+}
+
+.blockInfoPatient {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin: 20px;
+    padding: 20px;
+    background-color: #d0d7de;
+    width: 280px;
+    border-radius: 15px;
+    border: 2px solid #000000;
+}
+
+.blockInfoPatient p {
+    margin: 3px;
+}
+
+
+
 
 
