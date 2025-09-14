@@ -18,4 +18,5 @@ class Patients extends Model
         'ville',
         'codePostal'
     ];
+
 }

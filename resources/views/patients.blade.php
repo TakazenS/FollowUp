@@ -25,7 +25,7 @@
                             <p>Date de naissance : {{ $patient->dateNaissance }}</p>
                             <p>Lieu de naissance : {{ $patient->lieuNaissance }}</p>
                             <p>Sexe : {{ $patient->sexe }}</p>
-                            <p>Poids : {{ $patient->poids }}</p>
+                            <p>Poids : {{ $patient->poids }} Kg</p>
                             <p>Rue : {{ $patient->rue }}</p>
                             <p>Ville : {{ $patient->ville }}</p>
                             <p>Code postal : {{ $patient->codePostal }}</p>

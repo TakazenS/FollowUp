@@ -3,17 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Models\Patients;
-use Illuminate\Http\Request;
+use Illuminate\View\View;
+use Illuminate\View\Factory;
 
 class PatientsController extends Controller
 {
-    public function index() {
+    public function index(): View | Factory {
         return view('welcome');
     }
 
-    public function showPatients() {
+    public function showPatients(): View | Factory {
         $patients = Patients::all();
 
         return view('patients', compact('patients'));
     }
+
 }
