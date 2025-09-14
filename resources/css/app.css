@@ -7,6 +7,7 @@
 
 body {
     background: #171717;
+    height: 100vh;
 }
 
 .header {
@@ -82,6 +83,18 @@ body {
     margin: 20px;
 }
 
+.mainIndex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mainPatients {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+}
+
 .sectionPatients {
     display: flex;
     justify-content: center;
@@ -127,7 +140,25 @@ body {
     margin: 3px;
 }
 
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: 0;
+    height: 90px;
+    background-color: #212121;
+}
 
+.githubLinkFooter {
+    text-decoration: none;
+    transition: 0.3s ease-in-out;
+    font-size: 1.2em;
+}
+
+.githubLinkFooter:hover {
+    text-decoration: underline;
+    transform: translateY(-2px);
+}
 
 
 

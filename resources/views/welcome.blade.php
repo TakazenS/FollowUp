@@ -11,6 +11,9 @@
 </head>
 <body>
     @include('components/header')
-    <h1>Bienvenue !</h1>
+    <main class="mainIndex">
+        <h1>Bienvenue !</h1>
+    </main>
+    @include('components/footer')
 </body>
 </html>

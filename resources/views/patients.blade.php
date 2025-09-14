@@ -11,7 +11,7 @@
 </head>
 <body>
     @include('components/header')
-    <main>
+    <main class="mainPatients">
         <section class="sectionTitlePatient">
             <h1>Liste des patients :</h1>
         </section>
@@ -35,5 +35,6 @@
             </div>
         </section>
     </main>
+    @include('components/footer')
 </body>
 </html>
