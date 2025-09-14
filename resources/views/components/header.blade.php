@@ -1,6 +1,10 @@
 <header class="header">
     <nav class="navHeader">
-        <a href="{{ url('/') }}">Accueil</a>
-        <a href="{{ url('/patients') }}">Tout les patients</a>
+        <span class="spanLinkHeader">
+            <a href="{{ url('/') }}">Accueil</a>
+        </span>
+        <span class="spanLinkHeader">
+            <a href="{{ url('/patients') }}">Tout les patients</a>
+        </span>
     </nav>
 </header>
