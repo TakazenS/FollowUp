@@ -20,15 +20,17 @@
                 <section class="sectionGridPatient">
                     @foreach($patients as $patient)
                         <div class="blockInfoPatient">
-                            <p>Nom : {{ $patient->nom }}</p>
-                            <p>Prenom : {{ $patient->prenom }}</p>
-                            <p>Date de naissance : {{ $patient->dateNaissance }}</p>
-                            <p>Lieu de naissance : {{ $patient->lieuNaissance }}</p>
-                            <p>Sexe : {{ $patient->sexe }}</p>
-                            <p>Poids : {{ $patient->poids }} Kg</p>
-                            <p>Rue : {{ $patient->rue }}</p>
-                            <p>Ville : {{ $patient->ville }}</p>
-                            <p>Code postal : {{ $patient->codePostal }}</p>
+                            <div class="bgInfoPatients">
+                                <p>Nom : {{ $patient->nom }}</p>
+                                <p>Prenom : {{ $patient->prenom }}</p>
+                                <p>Date de naissance : {{ $patient->dateNaissance }}</p>
+                                <p>Lieu de naissance : {{ $patient->lieuNaissance }}</p>
+                                <p>Sexe : {{ $patient->sexe }}</p>
+                                <p>Poids : {{ $patient->poids }} Kg</p>
+                                <p>Rue : {{ $patient->rue }}</p>
+                                <p>Ville : {{ $patient->ville }}</p>
+                                <p>Code postal : {{ $patient->codePostal }}</p>
+                            </div>
                         </div>
                     @endforeach
                 </section>
