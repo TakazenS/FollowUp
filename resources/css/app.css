@@ -167,15 +167,32 @@ body {
 
 .blockInfoPatient {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
     margin: 20px;
-    padding: 20px;
-    width: 300px;
+    width: 350px;
     border-radius: 15px;
-    border: 2px solid #ffffff;
     background-color: #212121;
+    box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+    background-image: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
+    transition: all 1s cubic-bezier(0.10, 0.80, 0.60, 1);
+}
+
+.blockInfoPatient:hover {
+    transform: scale(1.02);
+    cursor: pointer;
+}
+
+.bgInfoPatients {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    border-radius: 12px;
+    background-color: #212121;
+    padding: 20px;
+    margin: 5px;
+    width: 100%;
 }
 
 .blockInfoPatient p {

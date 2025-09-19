@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Patient;
-use http\Env\Request;
+use Illuminate\Support\Facades\Request;
+
 
 class CreatePatientController extends Controller
 {
