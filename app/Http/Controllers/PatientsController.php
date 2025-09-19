@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Patient;
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Illuminate\View\Factory;
 
@@ -15,8 +16,14 @@ class PatientsController extends Controller
         return view('patients', compact('patients'));
     }
 
-    public function createPatient(): View | Factory {
+    public function showPatientForm(): View | Factory {
         return view('createPatient');
+    }
+
+    public function createPatient(Request $request) {
+        Patient::create($request->all());
+
+        return redirect('/patients');
     }
 
 }
