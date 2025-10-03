@@ -16,17 +16,19 @@ class IncidentController
         return view('createIncident', compact('patient'));
     }
 
-    public function createIncident(Request $request, $id): View
+    public function createIncident($patient_id, Request $request): View
     {
-        $patient = Patient::findOrFail($id);
+        $patient = Patient::findOrFail($patient_id);
 
-        Incident::addIncidentToPatient(
-            $patient->id,
-            $request->description,
-            $request->gravite,
-            $request->date
-        );
+        Incident::create([
+            'patient_id' => $patient->id,
+            'description' => $request->description,
+            'gravite' => $request->gravite,
+            'date' => $request->date
+        ]);
 
-        return view('patientDetails', compact('patient'));
+        $incidents = Incident::all()->where('patient_id', $patient->id);
+
+        return view('patientDetails', compact('incidents', 'patient'));
     }
 }

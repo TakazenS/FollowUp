@@ -24,6 +24,18 @@
             <p>Code postal : {{ $patient->codePostal }}</p>
         </div>
         <div>
+            @foreach($incidents as $incident)
+                <p>Description : {{ $incident->description }}</p>
+                @if($incident->gravite == 1)
+                    <p>Gravité : Faible</p>
+                @elseif($incident->gravite == 2)
+                    <p>Gravité : Moyen</p>
+                @else
+                    <p>Gravité : Elevé</p>
+                @endif
+            @endforeach
+        </div>
+        <div>
             <span class="spanDetailPatient">
                 <a href="{{ route('incident.create', $patient->id) }}">Ajouter un incident</a>
             </span>
