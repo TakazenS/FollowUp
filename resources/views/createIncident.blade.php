@@ -12,15 +12,8 @@
 <body>
     @include('components/header')
         <main class="mainCreateIncident">
-            <form action="{{ url('/patients') }}" method="post">
+            <form action="{{ route('incident.form.post', $patient->id) }}" method="post">
                 @csrf
-                <label for="patient_id">Patient :</label>
-                <select name="patient_id" required>
-                    <option value="noneValue">--Choisir un patient--</option>
-                    @foreach($patients as $patient)
-                        <option value="{{ $patient->id }}">{{ strtoupper($patient->nom) }} {{ $patient->prenom }}</option>
-                    @endforeach
-                </select>
                 <label for="description">Description :</label>
                 <input name="description" type="text" maxlength="255" placeholder="Description" required>
                 <label for="gravite">Gravité :</label>

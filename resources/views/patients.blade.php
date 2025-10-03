@@ -31,7 +31,7 @@
                                 <p>Ville : {{ $patient->ville }}</p>
                                 <p>Code postal : {{ $patient->codePostal }}</p>
                                 <span class="spanDetailPatient">
-                                    <a href="{{ url('/patient/{id}') }}">Détails</a>
+                                    <a href="{{ route('patient.details', $patient->id) }}">Détails du patient</a>
                                 </span>
                             </div>
                         </div>

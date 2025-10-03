@@ -24,4 +24,8 @@ class Patient extends Model
         'codePostal'
     ];
 
+    public function incidents()
+    {
+        return $this->hasMany(Incident::class);
+    }
 }

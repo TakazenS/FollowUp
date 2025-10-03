@@ -12,7 +12,7 @@
 <body>
     @include('components/header')
     <main class="mainCreatePatient">
-        <form action="{{ url('/patients') }}" method="post">
+        <form action="{{ route('patient.form.post') }}" method="post">
             @csrf
             <label for="nom">Nom :</label>
             <input type="text" name="nom" required>
