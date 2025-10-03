@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Incident;
 use App\Models\Patient;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -22,8 +23,9 @@ class PatientsController extends Controller
     {
         $patient = Patient::findOrFail($id);
         $details = Patient::all()->where('id', $id);
+        $incidents = Incident::where('patient_id', $patient->id)->get();
 
-        return view('patientDetails', compact('patient', 'details'));
+        return view('patientDetails', compact('patient', 'details', 'incidents'));
     }
 
     public function showPatientForm(): View | Factory

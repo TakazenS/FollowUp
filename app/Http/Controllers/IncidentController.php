@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Incident;
 use App\Models\Patient;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 
 class IncidentController
@@ -16,7 +17,7 @@ class IncidentController
         return view('createIncident', compact('patient'));
     }
 
-    public function createIncident($patient_id, Request $request): View
+    public function createIncident($patient_id, Request $request)
     {
         $patient = Patient::findOrFail($patient_id);
 
@@ -27,8 +28,6 @@ class IncidentController
             'date' => $request->date
         ]);
 
-        $incidents = Incident::all()->where('patient_id', $patient->id);
-
-        return view('patientDetails', compact('incidents', 'patient'));
+        return redirect('/patient/details/' . $patient_id);
     }
 }

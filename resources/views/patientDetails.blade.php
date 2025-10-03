@@ -12,19 +12,28 @@
 <body>
     @include('components/header')
     <main class="mainDetailsPatient">
-        <div>
-            <p>Nom : {{ $patient->nom }}</p>
-            <p>Prenom : {{ $patient->prenom }}</p>
-            <p>Date de naissance : {{ $patient->dateNaissance }}</p>
-            <p>Lieu de naissance : {{ $patient->lieuNaissance }}</p>
-            <p>Sexe : {{ $patient->sexe }}</p>
-            <p>Poids : {{ $patient->poids }} Kg</p>
-            <p>Rue : {{ $patient->rue }}</p>
-            <p>Ville : {{ $patient->ville }}</p>
-            <p>Code postal : {{ $patient->codePostal }}</p>
-        </div>
-        <div>
+        <section>
+            <div class="titleDetailsPatient">
+                <h2>Détails du patient :</h2>
+            </div>
+            <div>
+                <p>Nom : {{ $patient->nom }}</p>
+                <p>Prenom : {{ $patient->prenom }}</p>
+                <p>Date de naissance : {{ date('d/m/Y', strtotime($patient->dateNaissance)) }}</p>
+                <p>Lieu de naissance : {{ $patient->lieuNaissance }}</p>
+                <p>Sexe : {{ $patient->sexe }}</p>
+                <p>Poids : {{ $patient->poids }} Kg</p>
+                <p>Rue : {{ $patient->rue }}</p>
+                <p>Ville : {{ $patient->ville }}</p>
+                <p>Code postal : {{ $patient->codePostal }}</p>
+            </div>
+        </section>
+        <section>
+            <div class="titleIncidentsPatient">
+                <h2>Incidents :</h2>
+            </div>
             @foreach($incidents as $incident)
+            <div class="incidentsList">
                 <p>Description : {{ $incident->description }}</p>
                 @if($incident->gravite == 1)
                     <p>Gravité : Faible</p>
@@ -33,8 +42,10 @@
                 @else
                     <p>Gravité : Elevé</p>
                 @endif
+                <p>Date : {{ date('d/m/Y', strtotime($incident->date)) }}</p>
+            </div>
             @endforeach
-        </div>
+        </section>
         <div>
             <span class="spanDetailPatient">
                 <a href="{{ route('incident.create', $patient->id) }}">Ajouter un incident</a>

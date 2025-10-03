@@ -6,6 +6,8 @@
 }
 
 body {
+    display: flex;
+    flex-direction: column;
     background: #171717;
     height: 100vh;
 }
@@ -90,6 +92,7 @@ body {
 }
 
 .mainIndex {
+    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -100,6 +103,12 @@ body {
     display: flex;
     flex-direction: column;
     margin-bottom: 40px;
+}
+
+.mainDetailsPatient {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .mainCreatePatient {
@@ -229,6 +238,18 @@ body {
 
 .blockInfoPatient p {
     margin: 3px;
+}
+
+.titleDetailsPatient {
+    margin: 20px;
+}
+
+.titleIncidentsPatient  {
+    margin: 20px;
+}
+
+.incidentsList {
+    margin: 15px 0 15px 0;
 }
 
 .footer {
