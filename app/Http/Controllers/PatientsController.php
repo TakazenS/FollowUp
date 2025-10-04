@@ -21,11 +21,13 @@ class PatientsController extends Controller
 
     public function showPatientDetails($id): View
     {
-        $patient = Patient::findOrFail($id);
-        $details = Patient::all()->where('id', $id);
-        $incidents = Incident::where('patient_id', $patient->id)->get();
+        $patient = Patient::with(['incidents' => function ($query) {
+            $query->orderBy('created_at', 'desc');
+        }])->findOrFail($id);
 
-        return view('patientDetails', compact('patient', 'details', 'incidents'));
+        $incidents = $patient->incidents;
+
+        return view('patientDetails', compact('patient', 'incidents'));
     }
 
     public function showPatientForm(): View | Factory

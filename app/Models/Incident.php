@@ -18,4 +18,13 @@ class Incident extends Model
         'date',
         'patient_id'
     ];
+
+    public static function addIncidentToPatient(Patient $patient, string $description, int $gravite, string $date)
+    {
+        return $patient->incidents()->create([
+            'description' => $description,
+            'gravite' => $gravite,
+            'date' => $date,
+        ]);
+    }
 }

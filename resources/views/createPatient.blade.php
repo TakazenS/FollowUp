@@ -14,27 +14,45 @@
     <main class="mainCreatePatient">
         <form action="{{ route('patient.form.post') }}" method="post">
             @csrf
-            <label for="nom">Nom :</label>
-            <input type="text" name="nom" required>
-            <label for="prenom">Prénom :</label>
-            <input type="text" name="prenom" required>
-            <label for="dateNaissance">Date de naissance :</label>
-            <input type="date" name="dateNaissance" required>
-            <label for="lieuNaissance">Lieu de naissance :</label>
-            <input type="text" name="lieuNaissance" required>
-            <label for="sexe">Sexe :</label>
-            <select name="sexe" required>
-                <option value="M">M (Masculin)</option>
-                <option value="F">F (Feminin)</option>
-            </select>
-            <label for="poids">Poids :</label>
-            <input type="number" name="poids" required>
-            <label for="rue">Rue :</label>
-            <input type="text" name="rue" required>
-            <label for="ville">Ville :</label>
-            <input type="text" name="ville" required>
-            <label for="codePostal">Code postal :</label>
-            <input type="text" name="codePostal" required>
+            <div class="patientFormDiv">
+                <label for="nom">Nom :</label>
+                <input type="text" name="nom" placeholder="NOM" required>
+            </div>
+            <div class="patientFormDiv">
+                <label for="prenom">Prénom :</label>
+                <input type="text" name="prenom" placeholder="Prénom" required>
+            </div>
+            <div class="patientFormDiv">
+                <label for="dateNaissance">Date de naissance :</label>
+                <input type="date" name="dateNaissance" required>
+            </div>
+            <div class="patientFormDiv">
+                <label for="lieuNaissance">Lieu de naissance :</label>
+                <input type="text" name="lieuNaissance" placeholder="Lieu de Naissance" required>
+            </div>
+            <div class="patientFormDiv">
+                <label for="sexe">Sexe :</label>
+                <select name="sexe" required>
+                    <option value="M">M (Masculin)</option>
+                    <option value="F">F (Feminin)</option>
+                </select>
+            </div>
+            <div class="patientFormDiv">
+                <label for="poids">Poids :</label>
+                <input type="number" name="poids" placeholder="Poids (Kg)" required>
+            </div>
+            <div class="patientFormDiv">
+                <label for="rue">Rue :</label>
+                <input type="text" name="rue" placeholder="N° + Rue" required>
+            </div>
+            <div class="patientFormDiv">
+                <label for="ville">Ville :</label>
+                <input type="text" name="ville" placeholder="Ville" required>
+            </div>
+            <div class="patientFormDiv">
+                <label for="codePostal">Code postal :</label>
+                <input type="text" name="codePostal" placeholder="Code postal" required>
+            </div>
             <button type="submit">Envoyer</button>
         </form>
     </main>

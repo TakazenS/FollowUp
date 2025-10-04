@@ -12,7 +12,7 @@
 <body>
     @include('components/header')
     <main class="mainDetailsPatient">
-        <section>
+        <section class="detailsContainer">
             <div class="titleDetailsPatient">
                 <h2>Détails du patient :</h2>
             </div>
@@ -28,25 +28,39 @@
                 <p>Code postal : {{ $patient->codePostal }}</p>
             </div>
         </section>
-        <section>
+        <section class="incidentsContainer">
             <div class="titleIncidentsPatient">
                 <h2>Incidents :</h2>
             </div>
-            @foreach($incidents as $incident)
-            <div class="incidentsList">
-                <p>Description : {{ $incident->description }}</p>
-                @if($incident->gravite == 1)
-                    <p>Gravité : Faible</p>
-                @elseif($incident->gravite == 2)
-                    <p>Gravité : Moyen</p>
-                @else
-                    <p>Gravité : Elevé</p>
-                @endif
-                <p>Date : {{ date('d/m/Y', strtotime($incident->date)) }}</p>
+            <div class="incidentsGrid">
+                @foreach($incidents as $incident)
+                <section class="incidentCard">
+                    <div class="incidentsList">
+                        <p>Description : {{ $incident->description }}</p>
+                        @if($incident->gravite == 1)
+                            <p>Gravité : Faible</p>
+                        @elseif($incident->gravite == 2)
+                            <p>Gravité : Moyen</p>
+                        @else
+                            <p>Gravité : Elevé</p>
+                        @endif
+                        <p>Date : {{ date('d/m/Y', strtotime($incident->date)) }}</p>
+                    </div>
+                    <div class="dropIncidentLink">
+                        <span class="spanDetailPatient">
+                            <a href="">Supprimer</a>
+                        </span>
+                    </div>
+                    <div class="updateIncidentLink">
+                        <span class="spanDetailPatient">
+                            <a href="">Modifier</a>
+                        </span>
+                    </div>
+                </section>
+                @endforeach
             </div>
-            @endforeach
         </section>
-        <div>
+        <div class="addIncidentLink">
             <span class="spanDetailPatient">
                 <a href="{{ route('incident.create', $patient->id) }}">Ajouter un incident</a>
             </span>

@@ -13,7 +13,7 @@
     @include('components/header')
     <main class="mainPatients">
         <section class="sectionTitlePatient">
-            <h1>Liste des patients :</h1>
+            <h2>Liste des patients :</h2>
         </section>
         <section class="sectionPatient">
             <div class="containerGridPatient">

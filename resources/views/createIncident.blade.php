@@ -27,6 +27,11 @@
                 <input name="date" type="date" required>
                 <button type="submit">Envoyer</button>
             </form>
+            <div class="backDetailsLink">
+                <span class="spanDetailPatient">
+                    <a href="{{ url()->previous() }}">Retour</a>
+                </span>
+            </div>
         </main>
     @include('components/footer')
 </body>

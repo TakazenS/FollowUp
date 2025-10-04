@@ -21,12 +21,12 @@ class IncidentController
     {
         $patient = Patient::findOrFail($patient_id);
 
-        Incident::create([
-            'patient_id' => $patient->id,
-            'description' => $request->description,
-            'gravite' => $request->gravite,
-            'date' => $request->date
-        ]);
+        Incident::addIncidentToPatient(
+            $patient,
+            $request->description,
+            (int)$request->gravite,
+            $request->date
+        );
 
         return redirect('/patient/details/' . $patient_id);
     }
