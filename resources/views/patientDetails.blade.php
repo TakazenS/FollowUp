@@ -54,23 +54,25 @@
                         @endswitch
                         <p>Date : {{ $incident->date->format('d/m/Y') }}</p>
                     </div>
-                    <div class="dropIncidentLink">
-                        <span class="spanDetailPatient">
-                            <a href="#" onclick="if(confirm('Voulez-vous vraiment supprimer cet incident ?')) { document.getElementById('delete-incident-{{ $incident->id }}').submit(); }">
-                                Supprimer
-                            </a>
-                        </span>
-                        <form id="delete-incident-{{ $incident->id }}"
-                              action="{{ route('incident.delete', ['patient' => $patient->id, 'incident' => $incident->id]) }}"
-                              method="POST">
-                            @csrf
-                            @method('DELETE')
-                        </form>
-                    </div>
-                    <div class="updateIncidentLink">
-                        <span class="spanDetailPatient">
-                            <a href="#">Modifier</a>
-                        </span>
+                    <div class="containerBtnCardIncident">
+                        <div class="dropIncidentLink">
+                            <span class="spanDetailPatient">
+                                <a href="#" onclick="if(confirm('Voulez-vous vraiment supprimer cet incident ?')) { document.getElementById('delete-incident-{{ $incident->id }}').submit(); }">
+                                    Supprimer
+                                </a>
+                            </span>
+                            <form id="delete-incident-{{ $incident->id }}"
+                                  action="{{ route('incident.delete', ['patient' => $patient->id, 'incident' => $incident->id]) }}"
+                                  method="POST">
+                                @csrf
+                                @method('DELETE')
+                            </form>
+                        </div>
+                        <div class="updateIncidentLink">
+                            <span class="spanDetailPatient">
+                                <a href="#">Modifier</a>
+                            </span>
+                        </div>
                     </div>
                 </section>
                 @endforeach

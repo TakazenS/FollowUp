@@ -25,7 +25,7 @@
                 </select>
                 <label for="date">Date :</label>
                 <input name="date" type="date" required>
-                <button type="submit">Envoyer</button>
+                <button class="btnValiderIncident" type="submit">Envoyer</button>
             </form>
             <div class="backDetailsLink">
                 <span class="spanDetailPatient">
