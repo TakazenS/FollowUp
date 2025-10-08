@@ -30,4 +30,15 @@ class IncidentController
 
         return redirect('/patient/details/' . $patient_id);
     }
+
+    public function deleteIncident(Patient $patient, Incident $incident)
+    {
+        if ($incident->patient_id !== $patient->id) {
+            abort(404);
+        }
+
+        $incident->removeIncidentFromPatient();
+
+        return redirect()->route('patient.details', $patient->id);
+    }
 }

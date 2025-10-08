@@ -17,4 +17,7 @@ Route::get('/patient/incidents/create/{id}', [IncidentController::class, 'showIn
     ->where('id', '[0-9]+');
 Route::post('/patient/details/{id}', [IncidentController::class, 'createIncident'])->name('incident.form.post')
     ->where('id', '[0-9]+');
-
+Route::delete('/patient/{patient}/incident/{incident}', [IncidentController::class, 'deleteIncident'])
+    ->name('incident.delete')
+    ->whereNumber('patient')
+    ->whereNumber('incident');

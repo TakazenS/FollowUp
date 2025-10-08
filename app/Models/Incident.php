@@ -6,10 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Incident extends Model
 {
-    /**
-     * @method static \Illuminate\Database\Eloquent\Builder|static create(array $attributes = [])
-     */
-
     protected $table = 'incidents';
 
     protected $fillable = [
@@ -19,6 +15,13 @@ class Incident extends Model
         'patient_id'
     ];
 
+    protected $casts = ['date' => 'date'];
+
+    public function patient()
+    {
+        return $this->belongsTo(Patient::class);
+    }
+
     public static function addIncidentToPatient(Patient $patient, string $description, int $gravite, string $date)
     {
         return $patient->incidents()->create([
@@ -26,5 +29,10 @@ class Incident extends Model
             'gravite' => $gravite,
             'date' => $date,
         ]);
+    }
+
+    public function removeIncidentFromPatient(): bool
+    {
+        return (bool) $this->delete();
     }
 }

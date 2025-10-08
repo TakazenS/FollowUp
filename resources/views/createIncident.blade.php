@@ -12,7 +12,7 @@
 <body>
     @include('components/header')
         <main class="mainCreateIncident">
-            <form action="{{ route('incident.form.post', $patient->id) }}" method="post">
+            <form action="{{ route('incident.form.post', $patient->id) }}" method="POST">
                 @csrf
                 <label for="description">Description :</label>
                 <input name="description" type="text" maxlength="255" placeholder="Description" required>
