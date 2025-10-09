@@ -10,28 +10,28 @@
     <title>FollowUp | Patients</title>
 </head>
 <body>
-    @include('components/header')
-    <main class="mainPatients">
-        <section class="sectionTitlePatient">
-            <h2>Liste des patients :</h2>
-        </section>
-        <section class="sectionPatient">
-            <div class="containerGridPatient">
-                <section class="sectionGridPatient">
-                    @foreach($patients as $patient)
-                        <div class="blockInfoPatient">
-                            <div class="bgInfoPatients">
-                                <p>{{ strtoupper($patient->nom) }} {{ $patient->prenom }}</p>
-                                <span class="spanDetailPatient">
-                                    <a href="{{ route('patient.details', $patient->id) }}">Détails du patient</a>
-                                </span>
-                            </div>
+@include('components/header')
+<main class="mainPatients">
+    <section class="sectionTitlePatient">
+        <h2>Liste des patients :</h2>
+    </section>
+    <section class="sectionPatient">
+        <div class="containerGridPatient">
+            <section class="sectionGridPatient">
+                @foreach($patients as $patient)
+                    <div class="blockInfoPatient">
+                        <div class="bgInfoPatients">
+                            <p>{{ strtoupper($patient->nom) }} {{ $patient->prenom }}</p>
+                            <span class="spanDetailPatient">
+                                <a href="{{ route('patient.details', $patient) }}">Détails du patient</a>
+                            </span>
                         </div>
-                    @endforeach
-                </section>
-            </div>
-        </section>
-    </main>
-    @include('components/footer')
+                    </div>
+                @endforeach
+            </section>
+        </div>
+    </section>
+</main>
+@include('components/footer')
 </body>
 </html>

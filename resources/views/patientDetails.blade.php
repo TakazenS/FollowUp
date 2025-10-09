@@ -10,76 +10,76 @@
     <title>Follow Up | Détails du patient</title>
 </head>
 <body>
-    @include('components/header')
-    <main class="mainDetailsPatient">
-        <section class="detailsContainer">
-            <div class="titleDetailsPatient">
-                <h2>Détails du patient :</h2>
-            </div>
-            <div class="infoDetailsPatient">
-                <p>Nom : {{ $patient->nom }}</p>
-                <p>Prenom : {{ $patient->prenom }}</p>
-                <p>Date de naissance : {{ date('d/m/Y', strtotime($patient->dateNaissance)) }}</p>
-                <p>Lieu de naissance : {{ $patient->lieuNaissance }}</p>
-                <p>Sexe : {{ $patient->sexe }}</p>
-                <p>Poids : {{ $patient->poids }} Kg</p>
-                <p>Rue : {{ $patient->rue }}</p>
-                <p>Ville : {{ $patient->ville }}</p>
-                <p>Code postal : {{ $patient->codePostal }}</p>
-            </div>
-        </section>
-        <section class="containerTitleIncidentPatient">
-            @if($incidents->isNotEmpty())
+@include('components/header')
+<main class="mainDetailsPatient">
+    <section class="detailsContainer">
+        <div class="titleDetailsPatient">
+            <h2>Détails du patient :</h2>
+        </div>
+        <div class="infoDetailsPatient">
+            <p>Nom : {{ $patient->nom }}</p>
+            <p>Prenom : {{ $patient->prenom }}</p>
+            <p>Date de naissance : {{ date('d/m/Y', strtotime($patient->dateNaissance)) }}</p>
+            <p>Lieu de naissance : {{ $patient->lieuNaissance }}</p>
+            <p>Sexe : {{ $patient->sexe }}</p>
+            <p>Poids : {{ $patient->poids }} Kg</p>
+            <p>Rue : {{ $patient->rue }}</p>
+            <p>Ville : {{ $patient->ville }}</p>
+            <p>Code postal : {{ $patient->codePostal }}</p>
+        </div>
+    </section>
+    <section class="containerTitleIncidentPatient">
+        @if($incidents->isNotEmpty())
             <div class="titleIncidentsPatient">
                 <h2>Incidents :</h2>
             </div>
-            @endif
-            <div class="sdp-add-incident">
+        @endif
+        <div class="sdp-add-incident">
                 <span class="spanDetailPatient">
                     <a href="{{ route('incident.create', $patient->id) }}">Ajouter un incident</a>
                 </span>
-            </div>
-        </section>
-        @if($incidents->isNotEmpty())
+        </div>
+    </section>
+    @if($incidents->isNotEmpty())
         <section class="incidentsContainer">
             <div class="incidentsGrid">
                 @foreach($incidents as $incident)
-                <section class="incidentCard">
-                    <div class="incidentsList">
-                        <p>Description : {{ $incident->description }}</p>
-                        @switch($incident->gravite)
-                            @case(1) <p>Gravité : Faible</p> @break
-                            @case(2) <p>Gravité : Moyen</p> @break
-                            @default <p>Gravité : Élevé</p>
-                        @endswitch
-                        <p>Date : {{ $incident->date->format('d/m/Y') }}</p>
-                    </div>
-                    <div class="containerBtnCardIncident">
-                        <div class="dropIncidentLink">
+                    <section class="incidentCard">
+                        <div class="incidentsList">
+                            <p>Description : {{ $incident->description }}</p>
+                            @switch($incident->gravite)
+                                @case(1) <p>Gravité : Faible</p> @break
+                                @case(2) <p>Gravité : Moyen</p> @break
+                                @default <p>Gravité : Élevé</p>
+                            @endswitch
+                            <p>Date : {{ $incident->date->format('d/m/Y') }}</p>
+                        </div>
+                        <div class="containerBtnCardIncident">
+                            <div class="dropIncidentLink">
                             <span class="spanDetailPatient">
                                 <a href="#" onclick="if(confirm('Voulez-vous vraiment supprimer cet incident ?')) { document.getElementById('delete-incident-{{ $incident->id }}').submit(); }">
                                     Supprimer
                                 </a>
                             </span>
-                            <form id="delete-incident-{{ $incident->id }}"
-                                  action="{{ route('incident.delete', ['patient' => $patient->id, 'incident' => $incident->id]) }}"
-                                  method="POST">
-                                @csrf
-                                @method('DELETE')
-                            </form>
-                        </div>
-                        <div class="updateIncidentLink">
+                                <form id="delete-incident-{{ $incident->id }}"
+                                      action="{{ route('incident.delete', ['patient' => $patient->id, 'incident' => $incident->id]) }}"
+                                      method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                </form>
+                            </div>
+                            <div class="updateIncidentLink">
                             <span class="spanDetailPatient">
                                 <a href="#">Modifier</a>
                             </span>
+                            </div>
                         </div>
-                    </div>
-                </section>
+                    </section>
                 @endforeach
             </div>
         </section>
-        @endif
-    </main>
-    @include('components/footer')
+    @endif
+</main>
+@include('components/footer')
 </body>
 </html>

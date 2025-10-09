@@ -14,18 +14,15 @@ class PatientsController extends Controller
     {
         $patients = Patient::all();
 
-        return view('patients', compact('patients'));
+        return view('patients', ['patients' => $patients]);
     }
 
-    public function showPatientDetails($id): View
+    public function showPatientDetails(Patient $patient): View
     {
-        $patient = Patient::with(['incidents' => function ($query) {
-            $query->orderBy('created_at', 'desc');
-        }])->findOrFail($id);
-
+        $patient->load(['incidents' => fn($q) => $q->latest()]);
         $incidents = $patient->incidents;
 
-        return view('patientDetails', compact('patient', 'incidents'));
+        return view('patientDetails', ['patient' => $patient, 'incidents' => $incidents]);
     }
 
     public function showPatientForm(): View | Factory
@@ -37,7 +34,6 @@ class PatientsController extends Controller
     {
         Patient::create($request->all());
 
-        return redirect('/patients');
+        return redirect()->route('patients.show');
     }
-
 }

@@ -9,25 +9,25 @@ use Illuminate\View\View;
 
 class IncidentController
 {
-    public function showIncidentForm($id): View
+    public function showIncidentForm(Patient $patient): View
     {
-        $patient = Patient::findOrFail($id);
+        $patient->findOrFail($patient->id);
 
-        return view('createIncident', compact('patient'));
+        return view('createIncident', ['patient' => $patient]);
     }
 
-    public function createIncident($patient_id, Request $request)
+    public function createIncident(Patient $patient, Request $request)
     {
-        $patient = Patient::findOrFail($patient_id);
+        $patient_id = $patient->findOrFail($patient->id);
 
         Incident::addIncidentToPatient(
-            $patient,
+            $patient_id,
             $request->description,
             (int)$request->gravite,
             $request->date
         );
 
-        return redirect('/patient/details/' . $patient_id);
+        return redirect()->route('patients.show', ['patient' => $patient]);
     }
 
     public function deleteIncident(Patient $patient, Incident $incident)

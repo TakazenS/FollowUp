@@ -5,18 +5,30 @@ use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\PatientsController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [WelcomeController::class, 'showIndex'])->name('home');
+Route::get('/', [WelcomeController::class, 'showIndex'])
+    ->name('home');
 
-Route::get('/patients', [PatientsController::class, 'showPatients'])->name('patients.show');
-Route::get('/patient/create', [PatientsController::class, 'showPatientForm'])->name('patient.create');
-Route::post('/patients', [PatientsController::class, 'createPatient'])->name('patient.form.post');
-Route::get('/patient/details/{id}', [PatientsController::class, 'showPatientDetails'])->name('patient.details')
-    ->where('id', '[0-9]+');
+Route::get('/patients', [PatientsController::class, 'showPatients'])
+    ->name('patients.show');
 
-Route::get('/patient/incidents/create/{id}', [IncidentController::class, 'showIncidentForm'])->name('incident.create')
-    ->where('id', '[0-9]+');
-Route::post('/patient/details/{id}', [IncidentController::class, 'createIncident'])->name('incident.form.post')
-    ->where('id', '[0-9]+');
+Route::get('/patient/create', [PatientsController::class, 'showPatientForm'])
+    ->name('patient.create');
+
+Route::post('/patients', [PatientsController::class, 'createPatient'])
+    ->name('patient.form.post');
+
+Route::get('/patient/details/{patient}', [PatientsController::class, 'showPatientDetails'])
+    ->name('patient.details')
+    ->whereNumber('patient');
+
+Route::get('/patient/incidents/create/{patient}', [IncidentController::class, 'showIncidentForm'])
+    ->name('incident.create')
+    ->whereNumber('patient');
+
+Route::post('/patient/details/{patient}', [IncidentController::class, 'createIncident'])
+    ->name('incident.form.post')
+    ->whereNumber('patient');
+
 Route::delete('/patient/{patient}/incident/{incident}', [IncidentController::class, 'deleteIncident'])
     ->name('incident.delete')
     ->whereNumber('patient')
