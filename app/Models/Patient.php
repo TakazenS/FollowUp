@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use PhpParser\Builder\Class_;
 
 class Patient extends Model
 {
@@ -20,7 +22,7 @@ class Patient extends Model
         'codePostal'
     ];
 
-    public function incidents()
+    public function incidents(): HasMany
     {
         return $this->hasMany(Incident::class);
     }
