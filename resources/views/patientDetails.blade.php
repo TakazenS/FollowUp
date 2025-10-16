@@ -78,6 +78,28 @@
                 @endforeach
             </div>
         </section>
+        <section class="container-pagination">
+            <div class="pagination">
+                <div class="custom-pagination">
+                    <div class="container-next-prev">
+                        @if ($incidents->onFirstPage())
+                            <span class="disabled"><img src="{{ asset('images/arrow-prev.svg') }}" alt="arrow-prev-1" width="40px" height="40px"></span>
+                        @else
+                            <a href="{{ $incidents->previousPageUrl() }}" rel="prev"><img src="{{ asset('images/arrow-prev.svg') }}" alt="arrow-prev-2" width="40px" height="40px"></a>
+                        @endif
+                    </div>
+                </div>
+                <div class="custom-pagination">
+                    <div class="container-next-prev">
+                        @if ($incidents->hasMorePages())
+                            <a href="{{ $incidents->nextPageUrl() }}" rel="next"><img src="{{ asset('images/arrow-next.svg') }}" alt="arrow-next-1" width="40px" height="40px"></a>
+                        @else
+                            <span class="disabled"><img src="{{ asset('images/arrow-next.svg') }}" alt="arrow-next-2" width="40px" height="40px"></span>
+                        @endif
+                    </div>
+                </div>
+            </div>
+        </section>
     @endif
 </main>
 @include('components/footer')

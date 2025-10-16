@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\Api\PatientApiController;
 use App\Http\Controllers\IncidentController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\PatientsController;
 use Illuminate\Support\Facades\Route;
 
+// Basic
 Route::get('/', [WelcomeController::class, 'showIndex'])
     ->name('home');
 
@@ -33,3 +35,6 @@ Route::delete('/patient/{patient}/incident/{incident}', [IncidentController::cla
     ->name('incident.delete')
     ->whereNumber('patient')
     ->whereNumber('incident');
+
+// API
+Route::get('/api/patients', [PatientApiController::class, 'getPatients']);

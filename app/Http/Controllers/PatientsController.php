@@ -19,8 +19,9 @@ class PatientsController extends Controller
 
     public function showPatientDetails(Patient $patient): View
     {
-        $patient->load(['incidents' => fn($q) => $q->latest()]);
-        $incidents = $patient->incidents;
+        $incidents = $patient->incidents()
+                             ->latest()
+                             ->paginate(6);
 
         return view('patientDetails', ['patient' => $patient, 'incidents' => $incidents]);
     }

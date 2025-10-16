@@ -27,7 +27,7 @@ class IncidentController
             $request->date
         );
 
-        return redirect()->route('patients.show', ['patient' => $patient]);
+        return redirect()->route('patient.details', ['patient' => $patient]);
     }
 
     public function deleteIncident(Patient $patient, Incident $incident)
